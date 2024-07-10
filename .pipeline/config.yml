@@ -6,10 +6,10 @@ general:
       deployTool: 'mtaDeployPlugin'
       deployType: 'standard'
       cfApiEndpoint: 'https://api.cf.us10-001.hana.ondemand.com'
+      cfOrg: 'e97a1146trial_e97a1146trial'
       cloudFoundry:
-        org: 'e97a1146trial_e97a1146trial'
         space: 'Lokesh'
         username: 'lokesh.b.2020.ad@ritchennai.edu.in'
         password: {
-          credentialId: 'btp'
+          credentialId: 'cfCredentialsId'
         }
