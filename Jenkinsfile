@@ -24,5 +24,13 @@ pipeline {
                 }
             }
         }
+        stage('Archive Artifact') {
+            steps {
+                script {
+                    // Archive the generated MTAR artifact
+                    archiveArtifacts artifacts: '**/*.mtar', allowEmptyArchive: true
+                }
+            }
+        }
     }
 }
