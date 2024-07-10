@@ -13,7 +13,7 @@ pipeline {
         stage('Build with Piper') {
             steps {
                 script {
-                    sh 'brew install mbt'
+                    sh 'npm install -g mbt'
                     sh './piper mtaBuild'
                 }
             }
