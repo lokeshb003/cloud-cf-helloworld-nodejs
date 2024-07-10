@@ -3,8 +3,6 @@ general:
     mtaBuild:
       buildTarget: 'CF'
     cloudFoundryDeploy:
-      deployTool: 'cf_native'
-      deployType: 'standard'
       cloudFoundry:
         org: 'e97a1146trial_e97a1146trial'
         space: 'Lokesh'
