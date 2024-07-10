@@ -1,10 +1,15 @@
-@Library('piper-lib-os') _
-node() {
-    stage('prepare') {
-        checkout scm
-        setupCommonPipelineEnvironment script:this
+pipeline {
+    agent {
+        docker {
+            image 'ppiper/cf-cli' 
+            args '-u root:root'
+        }
     }
-    stage('build') {
-        mtaBuild script: this
+    @Library('piper-lib-os')
+    stages {
+        stage('prepare') {
+          checkout scm
+          setupCommonPipelineEnvironment script:this
+        }
     }
-}
+        
