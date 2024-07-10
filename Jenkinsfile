@@ -24,6 +24,13 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to CloudFoundry') {
+            steps {
+                script {
+                    sh './piper cloudFoundryDeploy'
+                }
+            }
+        }
         stage('Archive Artifact') {
             steps {
                 script {
