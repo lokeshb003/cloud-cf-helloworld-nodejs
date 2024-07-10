@@ -18,6 +18,7 @@ pipeline {
                     sh 'mv mbt /usr/local/bin/'
                     sh "echo 'export PATH=$PATH:/usr/local/bin/mbt' >> ~/.zshrc"
                     sh 'source ~/.zshrc'
+                    sh 'mbt --version'
                     sh './piper mtaBuild'
                 }
             }
