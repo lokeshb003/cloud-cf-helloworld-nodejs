@@ -3,9 +3,9 @@ steps:
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     cloudFoundry:
-        endpoint: 'https://api.cf.us10-001.hana.ondemand.com'
-        org: '8e581cbf-4802-42c1-ab67-d689727bd349'
-        space: 'Lokesh'
-        username: 'lokesh.b.2020.ad@ritchennai.edu.in'
-        password:
+        Endpoint: 'https://api.cf.us10-001.hana.ondemand.com'
+        Org: '8e581cbf-4802-42c1-ab67-d689727bd349'
+        Space: 'Lokesh'
+        Username: 'lokesh.b.2020.ad@ritchennai.edu.in'
+        Password:
           credentialId: 'cfCredentialsId'
