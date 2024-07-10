@@ -27,7 +27,8 @@ pipeline {
         stage('Deploy to CloudFoundry') {
             steps {
                 script {
-                    sh './piper cloudFoundryDeploy'
+                    library('piper-lib-os')
+                    cloudFoundryDeploy script: this
                 }
             }
         }
