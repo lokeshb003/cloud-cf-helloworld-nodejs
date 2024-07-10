@@ -3,7 +3,6 @@ general:
     mtaBuild:
       buildTarget: 'CF'
     cloudFoundryDeploy:
-      deployTool: 'mtaDeployPlugin'
       deployType: 'standard'
       cloudFoundry:
         org: 'e97a1146trial_e97a1146trial'
