@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy to CloudFoundry') {
             steps {
                 script {
-                    sh './piper cloudFoundryDeploy'
+                    sh './piper cloudFoundryDeploy --deployTool="mtaDeployPlugin" --deployType="standard" --apiEndpoint="https://api.cf.us10-001.hana.ondemand.com" --org="e97a1146trial_e97a1146trial" --space="Lokesh"'
                 }
             }
         }
