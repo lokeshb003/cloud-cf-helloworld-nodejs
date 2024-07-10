@@ -1,6 +1,7 @@
 general:
   steps:
     mtaBuild:
+      deployTool: 'cf_native'
       buildTarget: 'CF'
     cloudFoundryDeploy:
       deployType: 'standard'
