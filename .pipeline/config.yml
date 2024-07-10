@@ -1,15 +1,9 @@
 general:
-  steps:
-    mtaBuild:
-      buildTarget: 'CF'
-    cloudFoundryDeploy:
-      cloudFoundry:
-        deployTool: 'mtaDeployPlugin'
-        deployType: 'standard'
+steps:
+  cloudFoundryDeploy:
+    deployTool: 'mtaDeployPlugin'
+    cloudFoundry:
         cfApiEndpoint: 'https://api.cf.us10-001.hana.ondemand.com'
         cfOrg: 'e97a1146trial_e97a1146trial'
         space: 'Lokesh'
-        username: 'lokesh.b.2020.ad@ritchennai.edu.in'
-        password: {
-          credentialId: 'cfCredentialsId'
-        }
+        credentialId: 'cfCredentialsId'
