@@ -13,6 +13,7 @@ pipeline {
         stage('Build with Piper') {
             steps {
                 script {
+                    sh 'apt update && apt install wget -y'
                     sh 'wget https://github.com/SAP/cloud-mta-build-tool/releases/download/v1.2.30/cloud-mta-build-tool_1.2.30_Darwin_arm64.tar.gz'
                     sh 'tar xvzf cloud-mta-build-tool_1.2.30_Darwin_arm64.tar.gz'
                     sh 'mv mbt /usr/local/bin/'
