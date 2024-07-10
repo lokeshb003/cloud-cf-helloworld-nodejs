@@ -5,6 +5,7 @@ node() {
         setupCommonPipelineEnvironment script:this
     }
     stage('build') {
+        sh 'chmod +x piper'
         mtaBuild script: this
     }
 }
