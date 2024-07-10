@@ -12,10 +12,8 @@ pipeline {
         }
         stage('Install wget') {
             steps {
-                sh '''
-                    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-                    brew install wget
-                '''
+                sh '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+                sh 'brew install wget'
             }
         }
         stage('Build with Piper') {
