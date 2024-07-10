@@ -5,10 +5,10 @@ general:
     cloudFoundryDeploy:
       deployTool: 'cf_native'
       deployType: 'standard'
+      cfApiEndpoint: 'https://api.cf.us10-001.hana.ondemand.com'
       cloudFoundry:
         org: 'e97a1146trial_e97a1146trial'
         space: 'Lokesh'
-        endpoint: 'https://api.cf.us10-001.hana.ondemand.com'
         username: 'lokesh.b.2020.ad@ritchennai.edu.in'
         password: {
           credentialId: 'btp'
