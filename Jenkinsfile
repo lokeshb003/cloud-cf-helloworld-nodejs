@@ -17,7 +17,7 @@ pipeline {
                     sh 'tar xvzf cloud-mta-build-tool_1.2.30_Darwin_arm64.tar.gz'
                     sh 'mv mbt /usr/local/bin/'
                     sh 'export PATH=$PATH:/usr/local/bin'
-                    sh 'mbt --version'
+                    sh '/usr/local/bin/mbt --version'
                     sh './piper mtaBuild'
                 }
             }
