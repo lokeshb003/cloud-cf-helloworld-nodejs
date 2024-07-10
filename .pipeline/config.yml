@@ -3,7 +3,7 @@ general:
     mtaBuild:
       buildTarget: 'CF'
     cloudFoundryDeploy:
-      deployTool: 'cf_native'
+      deployTool: ''
       deployType: 'standard'
       cfApiEndpoint: 'https://api.cf.us10-001.hana.ondemand.com'
       cloudFoundry:
