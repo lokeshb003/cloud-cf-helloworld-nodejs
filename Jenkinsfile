@@ -27,7 +27,8 @@ node {
                 cfCredentialsId: 'cfCredentialsId',    
                 deployType: 'standard',                    
                 manifest: 'manifest.yml',
-                deployTool: 'mtaDeployPlugin'
+                deployTool: 'mtaDeployPlugin',
+                buildTool: 'mta'
         }
     }
 }
