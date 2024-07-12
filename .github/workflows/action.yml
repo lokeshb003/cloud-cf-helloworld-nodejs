@@ -1,0 +1,51 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - 1_REST_persist_in_Memory
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      PATH: /usr/local/bin:/opt/homebrew/bin:/usr/local/go/bin:$PATH
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Piper library
+        run: |
+          git clone https://github.com/SAP/jenkins-library.git piper-lib-os
+          cp -r piper-lib-os/* .
+
+      - name: Prepare Environment
+        run: |
+          # Assuming setupCommonPipelineEnvironment is a script or command in your repository
+          ./setupCommonPipelineEnvironment.sh
+
+      - name: Build
+        env:
+          PATH: ${{ env.PATH }}:/opt/homebrew/bin
+        run: |
+          ./mtaBuild.sh
+          # Archive build artifacts
+          tar -czf build_artifacts.tar.gz **/target/*.*
+          echo "::set-output name=build-artifacts::build_artifacts.tar.gz"
+
+      - name: Deploy
+        env:
+          PATH: ${{ env.PATH }}:/opt/homebrew/bin
+        run: |
+          cf --version  # Verify CF CLI is available
+          ./cloudFoundryDeploy.sh --cfApiEndpoint "https://api.cf.us10-001.hana.ondemand.com" \
+                                  --cfOrg "e97a1146trial_e97a1146trial" \
+                                  --cfSpace "Lokesh" \
+                                  --cfCredentialsId "cfCredentialsId" \
+                                  --deployType "standard" \
+                                  --manifest "manifest.yml" \
+                                  --deployTool "mtaDeployPlugin" \
+                                  --buildTool "mta" \
+                                  --dockerCredentialsId "DockerCredential"
