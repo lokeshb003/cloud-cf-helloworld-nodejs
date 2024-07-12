@@ -28,7 +28,8 @@ node {
                 deployType: 'standard',                    
                 manifest: 'manifest.yml',
                 deployTool: 'mtaDeployPlugin',
-                buildTool: 'mta'
+                buildTool: 'mta',
+                dockerCredentialsId: 'DockerCredential'
         }
     }
 }
