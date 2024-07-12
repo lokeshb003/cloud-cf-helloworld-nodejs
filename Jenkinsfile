@@ -20,8 +20,15 @@ node {
     stage('deploy') {
         withEnv(['PATH+CF=/opt/homebrew/bin']) {
             sh 'cf --version'  // Verify CF CLI is available
-            sh 'cf login -u lokesh.b.2020.ad@ritchennai.edu.in -p Bewboh-diwjY1-minsuh'
-            sh 'cf push -f manifest.yml'
+            cloudFoundryDeploy script: this,
+                cfApiEndpoint: 'https://api.cf.us10-001.hana.ondemand.com',        
+                cfOrg: 'e97a1146trial_e97a1146trial',                        
+                cfSpace: 'Lokesh',                    
+                cfCredentialsId: 'cfCredentialsId',    
+                deployType: 'standard',                    
+                manifest: 'manifest.yml',
+                deployTool: 'mtaDeployPlugin',
+                buildTool: 'mta'
         }
     }
 }
