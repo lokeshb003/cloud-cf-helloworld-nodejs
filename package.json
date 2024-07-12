@@ -8,7 +8,7 @@
     "body-parser": "1.17.2"
   },
   "engines": {
-    "node": "6.x.x"
+    "node": "6.17.0"
   },  
   "scripts": {
     "start": "node server.js"
