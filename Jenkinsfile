@@ -28,7 +28,8 @@ node {
                   target: 'https://api.cf.us10-001.hana.ondemand.com',
                   organization: 'e97a1146trial_e97a1146trial',
                   cloudSpace: 'Lokesh',
-                  credentialsId: 'LOKESH_SAP_BTP_CRED'
+                  credentialsId: 'LOKESH_SAP_BTP_CRED',
+                  manifestChoice: [manifestFile: './manifest.yml']
               )
             }
         }
