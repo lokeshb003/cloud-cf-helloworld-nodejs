@@ -29,7 +29,7 @@ node {
                   cfOrg: 'e97a1146trial_e97a1146trial',                        
                   cfSpace: 'Lokesh',                    
                   cfCredentialsId: 'cfCredentialsId',    
-                  deployType: 'standard',                    
+                  deployType: 'blue-green',                    
                   manifest: 'manifest.yml',
                   deployTool: 'mtaDeployPlugin',
                   buildTool: 'mta',
