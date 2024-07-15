@@ -1,6 +1,6 @@
 ---
 applications:
-- name: sapcpcfhw
+- name: saplokeshapp
   path: .
   buildpack: nodejs_buildpack
   memory: 128M
