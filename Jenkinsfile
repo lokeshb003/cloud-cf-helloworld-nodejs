@@ -7,7 +7,7 @@ pipeline {
         stage('Setup') {
             steps {
                 script {
-                    sh 'curl --insecure --silent --retry 5 --retry-max-time 240 --location --output piper https://github.com/SAP/jenkins-library/releases/download/v1.369.0/piper-darwin.arm64'
+                    sh 'curl --insecure --silent --retry 5 --retry-max-time 240 --location --output piper https://github.com/SAP/jenkins-library/releases/download/v1.370.0/piper_master'
                     sh 'chmod +x piper'
                     sh './piper version'
                 }
