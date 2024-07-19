@@ -1,41 +1,42 @@
-@Library('piper-lib-os') _
-node {
+pipeline {
+    agent any
     environment {
-        PATH = "/usr/local/bin:/opt/homebrew/bin:/usr/local/go/bin:$PATH"
+        PATH = "/usr/local/bin:/opt/homebrew/bin:$PATH"
     }
-
-    stage('prepare') {
-        checkout scm
-        setupCommonPipelineEnvironment script: this
-    }
-
-    stage('build') {
-        script {
-            withEnv(['PATH+MBT=/opt/homebrew/bin']) {
-              mtaBuild script: this
-              // Archive build artifacts
-              archiveArtifacts artifacts: '**/target/*.*', allowEmptyArchive: true
+    stages {
+        stage('Setup') {
+            steps {
+                script {
+                    sh 'curl --insecure --silent --retry 5 --retry-max-time 240 --location --output piper https://github.com/SAP/jenkins-library/releases/download/v1.369.0/piper-darwin.arm64'
+                    sh 'chmod +x piper'
+                    sh './piper version'
+                }
             }
-            
         }
-    }
-
-    stage('deploy') {
-        script {
-            withEnv(['PATH+CF=/opt/homebrew/bin']) {
-              sh 'cf --version'  // Verify CF CLI is available
-              cloudFoundryDeploy script: this,
-                  cfApiEndpoint: 'https://api.cf.us10-001.hana.ondemand.com',        
-                  cfOrg: 'e97a1146trial_e97a1146trial',                        
-                  cfSpace: 'Lokesh',                    
-                  username: 'lokesh.b.2020.ad@ritchennai.edu.in',
-                  password: 'tofsYz-roqrit-9jyxga',
-                  deployType: 'blue-green',                    
-                  manifest: 'manifest.yml',
-                  deployTool: 'mtaDeployPlugin',
-                  buildTool: 'mta',
-                  dockerCredentialsId: 'DockerCredential',
-                  verbose: true
+        stage('Build with Piper') {
+            steps {
+                script {
+                    sh 'curl -L -o cloud-mta-build-tool_1.2.30_Darwin_arm64.tar.gz https://github.com/SAP/cloud-mta-build-tool/releases/download/v1.2.30/cloud-mta-build-tool_1.2.30_Darwin_arm64.tar.gz'
+                    sh 'tar xvzf cloud-mta-build-tool_1.2.30_Darwin_arm64.tar.gz'
+                    sh 'mv mbt /usr/local/bin/'
+                    sh 'mbt --version'
+                    sh './piper mtaBuild'
+                }
+            }
+        }
+        stage('Deploy to CloudFoundry') {
+            steps {
+                script {
+                    sh './piper cloudFoundryDeploy --deployTool="mtaDeployPlugin" --deployType="standard" --apiEndpoint="https://api.cf.us10-001.hana.ondemand.com" --org="8e581cbf-4802-42c1-ab67-d689727bd349" --space="Lokesh" --username="lokesh.b.2020.ad@ritchennai.edu.in" --password="tofsYz-roqrit-8jyxga"'
+                }
+            }
+        }
+        stage('Archive Artifact') {
+            steps {
+                script {
+                    // Archive the generated MTAR artifact
+                    archiveArtifacts artifacts: '**/*.mtar', allowEmptyArchive: true
+                }
             }
         }
     }
