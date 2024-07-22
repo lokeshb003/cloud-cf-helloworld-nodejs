@@ -9,4 +9,9 @@ node() {
             mtaBuild script: this
         }
     }
+    stage('deploy') {
+        withEnv(['PATH+CF=/opt/homebrew/bin']) {
+            cloudFoundryDeploy script: this
+        }
+    }
 }
