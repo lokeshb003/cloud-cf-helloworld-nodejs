@@ -8,6 +8,6 @@ steps:
     deployType: 'standard'
     cloudFoundry:
       apiEndpoint: 'https://api.cf.us10-001.hana.ondemand.com/'
-      org: 'e97a1146trial_e97a1146trial'
+      org: '4a1117f3trial'
       space: 'dev'
       credentialsId: 'CF_CREDENTIALSID'
