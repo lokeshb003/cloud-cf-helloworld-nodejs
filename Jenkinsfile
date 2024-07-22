@@ -5,7 +5,7 @@ node() {
         setupCommonPipelineEnvironment script: this
     }
     stage('build') {
-        withEnv(['PATH+MBT=/opt/homebrew/bin']) {
+        withEnv(['PATH+MBT+DOCKER=/opt/homebrew/bin']) {
             mtaBuild script: this
         }
     }
