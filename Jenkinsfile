@@ -27,6 +27,7 @@ pipeline {
         stage('Deploy to CloudFoundry') {
             steps {
                 script {
+                    sh 'cf login -a https://api.cf.us10-001.hana.ondemand.com/ -o e97a1146trial_e97a1146trial -s Lokesh -u lokesh.b.2020.ad@ritchennai.edu.in -p tofsYz-roqrit-8jyxga'
                     sh './piper cloudFoundryDeploy --deployTool="mtaDeployPlugin" --deployType="standard" --apiEndpoint="https://api.cf.us10-001.hana.ondemand.com" --org="e97a1146trial_e97a1146trial" --space="Lokesh" --username="lokesh.b.2020.ad@ritchennai.edu.in" --password="tofsYz-roqrit-8jyxga"'
                 }
             }
