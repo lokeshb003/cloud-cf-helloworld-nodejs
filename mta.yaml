@@ -4,6 +4,6 @@ version: 1.0.0
 description: A Hello World sample application
 provider: SAP Sample generator
 modules:
-  - name: piper.node.hello.world
+  - name: lokeshapp.piper.node.users
     type: nodejs
     path: .
